@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript" src="/eel.js"></script>
+	<title>Search</title>
+</head>
+<body id="body">
+	<div id="results"></div>
+<button id="se" onClick="back()">Back</button>
+</body>
+<style>
+	#body{
+			font-family: 'Roboto', sans-serif;
+			color: #FFFFFF;
+			background: linear-gradient(to right,rgba(16,16,16),rgba(40,40,40));
+		}
+	::-webkit-scrollbar {
+		  width: 3px;
+		  border-radius: 7px;
+	}
+
+	::-webkit-scrollbar-track {
+	  background: #f1f1f1; 
+	}
+
+	::-webkit-scrollbar-thumb {
+	  background: #888; 
+	}
+
+	::-webkit-scrollbar-thumb:hover {
+	  background: #555; 
+	}
+	#se{
+			border-radius: 10px;
+			height: 5%;
+			width: 60%;
+			background-color: #FFFFFF;
+			font-size: 15px;
+			color: #696969;
+	}
+</style>
+<script>
+	function back(){
+		window.location.replace("main.html");
+	}
+	function play(id){
+		eel.update(id);
+		window.location.replace("main.html")
+	}
+	async function results(){
+		songs = await eel.results()();
+			i=0;
+			while (i<=songs.length-1){
+				song=songs[i]
+				box=document.getElementById("results");
+				button=document.createElement("button");
+				image=document.createElement("img");
+				image.height="80";
+				image.width="80";
+				image.setAttribute("src",song["image"]);
+				button.id=song["uuid"];
+				button.setAttribute("onClick","play(this.id)");
+				button.innerHTML=song["songname"]+"|"+song["artist"];
+				button.appendChild(image);
+				box.appendChild(button);
+				box.appendChild(document.createElement("br"));
+				i=i+1;
+			}
+	}
+	results();
+</script>
+</html>

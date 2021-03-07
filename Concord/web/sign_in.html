@@ -1,0 +1,63 @@
+<html>
+<head>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,300&family=RocknRoll+One&display=swap" rel="stylesheet">
+	<title>Sign In</title>
+</head>
+<body id="body">
+	<img id="music" src="music.jpg">
+	<div id="side">
+		<h1 id="signin">Sign In</h1>
+		<input id="usi" placeholder="Email" type="text">
+		<input id="pai" placeholder="Password" type="text">
+		<br>
+		<br>
+		<button>Sign In</button>
+		<button id="register">Register</button>
+	</div>
+	</body>
+	<style>
+		#register{
+			position: relative;
+			bottom: 0%;
+		}
+		input{
+			border-radius: 10px;
+			color: #696969;
+			height: 5%;
+			width:60%;
+		}
+		button{
+			border-radius: 10px;
+			height: 5%;
+			width: 60%;
+			background-color: #FFFFFF;
+			font-size: 15px;
+			color: #696969;
+		}
+		#body{
+			font-family: 'Roboto', sans-serif;
+			color: #FFFFFF;
+			background: linear-gradient(to right,rgba(16,16,16),rgba(40,40,40));
+		}
+		#side{
+			position: absolute;
+			padding-top: 150;
+			right:0%;
+			width:60%;
+			height: 79%;
+			text-align: center;
+		}
+		#music{
+			position: absolute;
+			height:100%;
+			width:40%;
+			filter:blur(2px);
+			left:0px;
+			top:0%;
+		}
+		#signin{
+			font-size: 75px;
+		}
+	</style>
+</html>

@@ -1,0 +1,19 @@
+<html>
+<head><script type="text/javascript" src="/eel.js"></script></head>
+<body id="body"></body>
+<script>
+	async function pl(){
+		console.log("init");
+		z=document.getElementById("body");
+		console.log(z)
+		var song=await eel.returnsong()();
+		x=document.createElement("audio");
+		y=document.createElement("source");
+		y.src=song;
+		y.type="audio/mp3"
+		x.appendChild(y)
+		z.appendChild(x)
+	}
+	pl();
+</script>
+</html>

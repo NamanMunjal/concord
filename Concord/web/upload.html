@@ -1,0 +1,60 @@
+<html></!DOCTYPE html>
+<html>
+<head>
+	<title>Upload Song</title>
+	<script type="text/javascript" src="/eel.js"></script>
+</head>
+<body id="body">
+<input id="songname" type="text" placeholder="Song Name">
+<input id="artist" type="text" placeholder="Artist"> 
+<button onClick="upload()">Upload</button>
+</body>
+<style type="text/css">
+	#body{
+		padding-top: 300;
+			font-family: 'Roboto', sans-serif;
+			color: #FFFFFF;
+			text-align: center;
+			background: linear-gradient(to right,rgba(16,16,16),rgba(40,40,40));
+		}
+	input{
+			border-radius: 10px;
+			color: #696969;
+			font-size: 30px;
+			height: 40px;
+			width:60%;
+		}
+	button{
+			border-radius: 10px;
+			height: 40px;
+			width: 60%;
+			background-color: #FFFFFF;
+			font-size: 15px;
+			color: #696969;
+	}
+	::-webkit-scrollbar {
+		  width: 7px;
+		  border-radius: 5px;
+	}
+
+	::-webkit-scrollbar-track {
+	  background: #f1f1f1; 
+	}
+
+	::-webkit-scrollbar-thumb {
+	  background: #888; 
+	}
+
+	::-webkit-scrollbar-thumb:hover {
+	  background: #555; 
+	}
+	</style>
+	<script>
+		function upload(){
+			var x=document.getElementById("songname").value;
+			var y=document.getElementById("artist").value;
+			eel.upload(x,y);
+			window.location.replace("main.html");
+		}
+	</script>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Musikify Register</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="fontawesome-free-5.15.2-web/css/all.css" rel="stylesheet">
+    <link rel="icon" href="img/einstein.png">
+</head>
+<body>
+  <br>
+  <br>
+  <br>
+  <div id="test">
+  <img src="img/doggo.jpg">
+  </div>
+        <div class="container-fluid">
+            <div class="row vh-100">
+                <div class="container col-md-6 text-center py-5 d-flex flex-column justify-content-center auth-bg-section text-white" style="background-image: url(img/einstein.png);background-repeat:no-repeat">
+                    <h1 class="text-reset">MUSIKIFY<br>for nerds ~~and loners~~</h1>
+                    <p class="font-weight-bold text-reset">Musik is a siens bois. Even i learnt to play Musik.</p>
+                    <div id="doge" class="d-grid gap-2 d-md-block">
+                    <button type="button" class="btn btn-primary">Enjoy!</button>
+                  </div>
+                </div>
+                <div class="col-md-6 text-center d-flex flex-column py-5 justify-content-center">
+                    <div class="card">
+<article class="card-body">
+  <br>
+   <p class="text-success text-center">Register for Musik</p>
+  <form>
+  <div class="form-group">
+  <div class="input-group">
+    <div class="input-group-prepend">
+        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+     </div>
+    <input name="" class="form-control" placeholder="Username" type="email">
+  </div>
+  <br>
+  </div> 
+  <div class="form-group">
+  <div class="input-group">
+    <div class="input-group-prepend">
+        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+     </div>
+      <input class="form-control" placeholder="******" type="password">
+  </div> 
+  <br>
+  </div> 
+  <div class="form-group">
+  <button type="submit" class="btn btn-primary btn-block"> Register  </button>
+  </div> 
+  </form>
+</article>
+</div>
+            </div>
+            </div>
+        </div>
+<script type="text/javascript">
+  var test = document.getElementById('test');
+
+function translate(elem, x, y) {
+  var left = parseInt(css(elem, 'left'), 10),
+    top = parseInt(css(elem, 'top'), 10),
+    dx = left - x,
+    dy = top - y,
+    i = 1,
+    count = 20,
+    delay = 20;
+
+  function loop() {
+    if (i >= count) {
+      return;
+    }
+    i += 1;
+    elem.style.left = (left - (dx * i / count)).toFixed(0) + 'px';
+    elem.style.top = (top - (dy * i / count)).toFixed(0) + 'px';
+    setTimeout(loop, delay);
+  }
+
+  loop();
+}
+
+function css(element, property) {
+  return window.getComputedStyle(element, null).getPropertyValue(property);
+}
+
+window.onclick = function(e) {
+  var arr;
+
+  if (e.target.nodeName === 'BUTTON') {
+    test.style.cssText = 'visibility:visible;';
+    translate(test, +1500);
+  }
+};
+</script>
+</body>
+</html>

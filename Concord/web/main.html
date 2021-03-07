@@ -1,0 +1,176 @@
+<html>
+<head>
+	<title>Concord</title>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,300&family=RocknRoll+One&display=swap" rel="stylesheet">
+	<script type="text/javascript" src="/eel.js"></script>
+</head>
+<body id="body">
+	<div id="wel">
+	<h1 id="welcome">Welcome Back Comrade!</h1>
+	</div>
+	<div id="search"><button id="up" onClick="upload()">Upload Song!</button><input type="text" id="sear"><br><button id="se" onClick="search()">Search</button></div>
+	<div id="recent"></div>
+	<div id="recommended"></div>
+	<div id="alsongs"></div>
+	<div id="control">
+	<audio controls id="song"><source id="source"></audio>
+	</div>
+</body>
+<style type="text/css">
+	#body{
+			font-family: 'Roboto', sans-serif;
+			color: #FFFFFF;
+			background: linear-gradient(to right,rgba(16,16,16),rgba(40,40,40));
+		}
+	#search{
+		text-align: center;
+	}
+	#control{
+		text-align: center;
+	}
+	#recent{
+		display: flex;
+		overflow-x: scroll;
+		height: 20%;
+	}
+	input{
+			border-radius: 10px;
+			color: #696969;
+			font-size: 30px;
+			height: 5%;
+			width:60%;
+		}
+	#se{
+			border-radius: 10px;
+			height: 5%;
+			width: 60%;
+			background-color: #FFFFFF;
+			font-size: 15px;
+			color: #696969;
+	}
+	#up{
+			border-radius: 10px;
+			height: 5%;
+			width: 60%;
+			background-color: #FFFFFF;
+			font-size: 15px;
+			color: #696969;
+	}
+	#recommended{
+		display: flex;
+		overflow-x: scroll;
+		height: 20%;
+	}
+	#alsongs{
+		display: flex;
+		overflow-x: scroll;
+		height: 20%;
+	}
+	#wel{
+		text-align: center;
+		font-size: 30px;
+	}
+	::-webkit-scrollbar {
+		  width: 3px;
+		  border-radius: 7px;
+	}
+
+	::-webkit-scrollbar-track {
+	  background: #f1f1f1; 
+	}
+
+	::-webkit-scrollbar-thumb {
+	  background: #888; 
+	}
+
+	::-webkit-scrollbar-thumb:hover {
+	  background: #555; 
+	}
+	</style>
+	<script>
+		function upload(){
+			window.location.replace("upload.html");
+		}
+		async function play(id){
+			y=document.getElementById("song");
+			x=document.getElementById("source");
+			eel.update(id);
+			eel.play(id);
+			data=await eel.fetchplay()();
+			x.src= data;
+			x.type="audio/mp3";
+			y.load();
+			y.play();
+			recent();
+			recommend();
+		}
+		async function fetch(){
+			songs = await eel.returnsongs()();
+			i=0;
+			while (i<=songs.length-1){
+				song=songs[i]
+				box=document.getElementById("alsongs");
+				button=document.createElement("button");
+				image=document.createElement("img");
+				image.height="80";
+				image.width="80";
+				image.setAttribute("src",song["image"]);
+				button.id=song["uuid"];
+				button.setAttribute("onClick","play(this.id)");
+				button.innerHTML=song["songname"]+"|"+song["artist"];
+				button.appendChild(image);
+				box.appendChild(button);
+				box.appendChild(document.createElement("br"));
+				i=i+1;
+			}
+		}
+		async function recent(){
+			songs = await eel.recent()();
+			i=0;
+			while (i<=songs.length-1){
+				song=songs[i]
+				box=document.getElementById("recent");
+				button=document.createElement("button");
+				image=document.createElement("img");
+				image.height="80";
+				image.width="80";
+				image.setAttribute("src",song["image"]);
+				button.id=song["uuid"];
+				button.setAttribute("onClick","play(this.id)");
+				button.innerHTML=song["songname"]+"|"+song["artist"];
+				button.appendChild(image);
+				box.appendChild(button);
+				box.appendChild(document.createElement("br"));
+				i=i+1;
+			}
+		}
+		function search(){
+			eel.updatesearch(document.getElementById("sear").value);
+			window.location.replace("search.html")
+		}
+		async function recommend(){
+			songs = await eel.recommend()();
+			i=0;
+			while (i<=songs.length-1){
+				song=songs[i]
+				box=document.getElementById("recommended");
+				button=document.createElement("button");
+				image=document.createElement("img");
+				image.height="80";
+				image.width="80";
+				image.setAttribute("src",song["image"]);
+				button.id=song["uuid"];
+				button.setAttribute("onClick","play(this.id)");
+				button.innerHTML=song["songname"]+"|"+song["artist"];
+				button.appendChild(image);
+				box.appendChild(button);
+				box.appendChild(document.createElement("br"));
+				i=i+1;
+			}
+		}
+		fetch();
+		recent();
+		recommend();
+	</script>
+</html>
